@@ -20,11 +20,8 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useCreateIndex: true });
 
 app.listen(PORT, function() {
-  scrapeArticles();
   console.log("App running on port " + PORT + "!");
 });
-
-function scrapeArticles(){
 
 app.get("/scrape", function(req, res) {
   console.log(res)
@@ -49,8 +46,6 @@ app.get("/scrape", function(req, res) {
     res.send("Scrape Complete");
   });
 });
-
-}
 
 app.get("/articles", function(req, res) {
   db.Article.find({})
