@@ -14,26 +14,28 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/mytechnews";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/technews";
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useCreateIndex: true });
 
 app.listen(PORT, function() {
+  scrapeArticles();
   console.log("App running on port " + PORT + "!");
 });
 
+function scrapeArticles(){
+
 app.get("/scrape", function(req, res) {
-
-  axios.get("https://dzone.com").then(function(response) {
+  console.log(res)
+  axios.get("https://www.digitaltrends.com").then(function(response) {
     var $ = cheerio.load(response.data);
-
-    $("h3.article-title a").each(function(i, element) {
+    console.log(response)
+    $("h3 a").each(function(i, element) {
       var result = {};
-
+      console.log(result);
       result.title = $(this).text();
-      result.link = "https://dzone.com" + $(this).attr("href");
-
+      result.link = $(this).attr("href");
 
       db.Article.create(result)
         .then(function(dbArticle) {
@@ -47,6 +49,8 @@ app.get("/scrape", function(req, res) {
     res.send("Scrape Complete");
   });
 });
+
+}
 
 app.get("/articles", function(req, res) {
   db.Article.find({})
