@@ -12,7 +12,7 @@ function displayArticles() {
       url: "/articles"
     }).then(function(data) {
         for (var i = 0; i < data.length; i++) {
-          $("#articles").append("<div id='item' data-id='" + data[i]._id + "'><h2>" + data[i].title + "</h2><a href='" + data[i].link + "'target='_blank'>" + data[i].link + "</a></div><button id='writenote'>Write Note</button>");
+          $("#articles").append("<div id='item' data-id='" + data[i]._id + "'><h2>" + data[i].title + "</h2><a href='" + data[i].link + "'target='_blank'>" + data[i].link + "</a><br><button id='writenote' class='btn btn-primary'>Write Note</button></div>");
         }
   });
 }
@@ -39,13 +39,11 @@ $(document).on("click", "#writenote", function() {
       if (data.note) {
         $("#bodyinput").val(data.note.body);
       }
-      console.log(data);
     });
 });
 
 $(document).on("click", "#savenote", function() {
   var thisId = $(this).attr("data-id");
-
   $.ajax({
     method: "POST",
     url: "/articles/" + thisId,
@@ -53,7 +51,6 @@ $(document).on("click", "#savenote", function() {
       body: $("#bodyinput").val().trim()
     }
   }).then(function(data) {
-      console.log(data);
   });
 
 });
@@ -65,7 +62,6 @@ $(document).on("click", "#deletenote", function(){
     method: "POST",
     url: "/articles/" + thisId
   }).then(function(data){
-    console.log(data);
     $("#" + thisId).remove();
   });
 

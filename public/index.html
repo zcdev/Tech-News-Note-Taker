@@ -7,19 +7,36 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     />
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
     <style>
       #wrapper {
         padding: 1rem;
+      }
+      body {
+        font-family: 'Share Tech Mono', monospace;
+        background: url('background.jpg') 100% fixed no-repeat;
+      }
+      #main {
+        margin-top: 2rem;
+      }
+      #item {
+        background: linear-gradient(to bottom,rgba(242,246,248,1) 0%, rgba(216,225,231,1)  100%);
+        margin: 2rem;
+        padding: 2rem;
+        border-radius: 4px; 
+      }
+      h1 {
+        color: #fff;
       }
     </style>
   </head>
   <body>
     <div id="wrapper">
       <h1>Tech News Note Taker</h1>
-      <button id="scrape">Scrap News</button>
+      <button id="scrape" class="btn btn-primary">Scrap News</button>
       <div id="main">
-      <div id="articles"></div>
-    </div>
+        <div id="articles"></div>
+      </div>
     </div>
     <div
       class="modal fade"
@@ -41,12 +58,12 @@
               &times;
             </button>
             <div id="notes">
-              <h4>Your Notes</h4>
+              <h4>Your Note</h4>
               <div class="form-group">
                 <textarea id="bodyinput" name="body" class="form-control"></textarea>
               </div>
-              <button id="savenote">Save Note</button>
-              <button id="deletenote">Delete Note</button>
+              <button id="savenote" data-dismiss="modal" class="btn btn-primary">Save Note</button>
+              <button id="deletenote" data-dismiss="modal" class="btn btn-primary">Delete Note</button>
             </div>
             <div id="scrapped">
               <h4>News Scrapped!</h4>
