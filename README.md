@@ -9,6 +9,9 @@ In this project, I utilized Mongoose and Cheerio to scrape news from another web
 * Express
 * Mongoose
 * Cheerio
+* Axios
+* Bootstrap
+* jQuery
 
 Deployed link:
 https://tech-news-note-taker.herokuapp.com
