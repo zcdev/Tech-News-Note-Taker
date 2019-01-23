@@ -6,7 +6,7 @@ In this project, I utilized Mongoose and Cheerio to scrape news from another web
 
 ### Technologies
 
-* Express
+* Express.js
 * MongoDB
 * Mongoose
 * mLab
