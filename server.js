@@ -5,8 +5,6 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 var db = require("./models");
 
-var PORT = 3000;
-
 var app = express();
 
 app.use(logger("dev"));
@@ -18,10 +16,6 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/technews
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useCreateIndex: true });
-
-app.listen(PORT, function() {
-  console.log("App running on port " + PORT + "!");
-});
 
 app.get("/scrape", function(req, res) {
   console.log(res)
