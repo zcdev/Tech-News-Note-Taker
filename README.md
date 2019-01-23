@@ -11,6 +11,6 @@ In this project, I utilized Mongoose and Cheerio to scrape news from another web
 * Cheerio
 
 Deployed link:
-https://pure-atoll-57973.herokuapp.com
+https://tech-news-note-taker.herokuapp.com
 
 ![Drink-Da-Drink](public/technews.png)
