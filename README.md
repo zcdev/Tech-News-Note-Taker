@@ -9,6 +9,7 @@ In this project, I utilized Mongoose and Cheerio to scrape news from another web
 * Express
 * MongoDB
 * Mongoose
+* mLab
 * Morgan
 * Node.js
 * Cheerio
